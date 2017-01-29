@@ -23,6 +23,7 @@ function onRoute(req, res, next) {
     // if we find a link object, redirect the user
     // to the long url
 
+    Links.update(link, { $inc: { clicks: 1 } });
     res.writeHead(307, { 'Location': link.url});
     res.end();
 
